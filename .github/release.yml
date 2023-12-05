@@ -13,6 +13,9 @@ changelog:
         - design
     - title: 📚 Content Updates
       labels:
+        - content
+    - title: 📝 Documentation Updates
+      labels:
         - documentation
     - title: 🐛 Bugs Fixed
       labels:
