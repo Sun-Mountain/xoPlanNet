@@ -31,6 +31,14 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
   gem 'pry'
   gem 'pry-nav'
+
+  gem "rspec-rails", "~> 6.1"
+  gem "shoulda-matchers", "~> 5.3"
+  gem "factory_bot_rails", "~> 6.4"
+  gem "ffaker", "~> 2.23"
+  gem "database_cleaner", "~> 2.0"
+  gem "database_cleaner-active_record", "~> 2.1"
+  gem "email_spec", "~> 2.2"
 end
 
 group :development do
