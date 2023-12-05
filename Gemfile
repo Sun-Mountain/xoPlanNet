@@ -7,6 +7,9 @@ gem "sprockets-rails"
 gem "pg", "~> 1.1"
 # GraphQL is our default API [https://graphql.org]
 gem 'graphql', '~> 2.1'
+gem 'devise'
+gem 'devise_token_auth', '>= 1.2.0', git: "https://github.com/lynndylanhurley/devise_token_auth"
+gem 'graphql_devise'
 gem "puma", ">= 5.0"
 gem "importmap-rails"
 gem "turbo-rails"
@@ -29,6 +32,7 @@ gem 'sassc-rails'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
+  gem 'dotenv-rails'
   gem 'pry'
   gem 'pry-nav'
 end
