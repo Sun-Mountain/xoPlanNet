@@ -7,6 +7,9 @@ gem "sprockets-rails"
 gem "pg", "~> 1.1"
 # GraphQL is our default API [https://graphql.org]
 gem 'graphql', '~> 2.1'
+gem 'devise'
+gem 'devise_token_auth', '>= 1.2.0', git: "https://github.com/lynndylanhurley/devise_token_auth"
+gem 'graphql_devise'
 gem "puma", ">= 5.0"
 gem "importmap-rails"
 gem "turbo-rails"
