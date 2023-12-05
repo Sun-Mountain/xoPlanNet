@@ -1,0 +1,23 @@
+@import '../base/1_variables';
+
+#main-navigation {
+  background-color: $nav-bg;
+  color: $nav-text;
+  padding: 8px 16px;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .main-nav__item-link, .main-nav__item-link:visited {
+    color: $nav-text;
+    font-size: $nav-link-size;
+    text-decoration: none;
+  }
+
+  .main-nav__item-link.active {
+    border-bottom: 2px solid $nav-text;
+  }
+}
