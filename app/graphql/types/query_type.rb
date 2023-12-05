@@ -1,31 +1,28 @@
 # frozen_string_literal: true
 
 module Types
-  class QueryType < Types::BaseObject
-    field :node, Types::NodeType, null: true, description: "Fetches an object given its ID." do
-      argument :id, ID, required: true, description: "ID of the object."
+  class QueryType < BaseObject
+    field_class GraphqlDevise::Types::BaseField if Gem::Version.new(GraphQL::VERSION) >= Gem::Version.new('2.0')
+
+    field :user, resolver: Resolvers::UserShow
+    field :public_field, String, null: false, authenticate: false
+    field :private_field, String, null: false, authenticate: true
+    field :vip_field, String, null: false, authenticate: ->(user) { user.is_a?(User) && user.vip? }
+
+    def public_field
+      if context[:current_resource]
+        "Authenticated user on public field: #{context[:current_resource].email}"
+      else
+        'Field does not require authentication'
+      end
     end
 
-    def node(id:)
-      context.schema.object_from_id(id, context)
+    def private_field
+      'Field will always require authentication'
     end
 
-    field :nodes, [Types::NodeType, null: true], null: true, description: "Fetches a list of objects given a list of IDs." do
-      argument :ids, [ID], required: true, description: "IDs of the objects."
-    end
-
-    def nodes(ids:)
-      ids.map { |id| context.schema.object_from_id(id, context) }
-    end
-
-    # Add root-level fields here.
-    # They will be entry points for queries on your schema.
-
-    # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
+    def vip_field
+      'Field available only for VIP Users'
     end
   end
 end
